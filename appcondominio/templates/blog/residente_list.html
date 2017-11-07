@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+        {% for residente in residentes %}
+            <div class="post">
+                <div class="date">
+                    {{ residente.nombre }}
+                </div>
+                <h1><a href="{% url 'residente_detail' pk=residente.pk %}">{{ residente.apellido }}</a></h1>
+                <p>{{ residente.email|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    {% endblock %}
+{% load staticfiles %}
+    <html>
+        <head>
+            <title>Residentes</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        </head>
+        <body>
+          {% for residente in residentes %}
+            {% if residente.nombre %}
+                  <div class="post">
+                      <div class="date">
+                          {{ residente.nombre }}
+                      </div>
+                      <h1><a href="">{{ residente.apellido }}</a></h1>
+                      <p>{{ residente.email|linebreaksbr }}</p>
+                  </div>
+            {% endif %}
+              {% endfor %}
+
+        </body>
+    </html>

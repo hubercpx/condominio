@@ -1,0 +1,36 @@
+{% extends 'blog/base_mes.html' %}
+{% block content %}
+        {% for mes in meses %}
+            <div class="post">
+                <div class="date">
+                    {{ mes.monto }}
+                </div>
+                <h1><a href="{% url 'mes_detail' pk=mes.pk %}">{{ mes.nombre }}</a></h1>
+                <p>{{ mes.nombre|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    {% endblock %}
+{% load staticfiles %}
+    <html>
+        <head>
+            <title>Meses</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        </head>
+        <body>
+          {% for post in posts %}
+            {% if post.published_date %}
+                  <div class="post">
+                      <div class="date">
+                          {{ post.published_date }}
+                      </div>
+                      <h1><a href="">{{ post.title }}</a></h1>
+                      <p>{{ post.text|linebreaksbr }}</p>
+                  </div>
+            {% endif %}
+              {% endfor %}
+
+        </body>
+    </html>

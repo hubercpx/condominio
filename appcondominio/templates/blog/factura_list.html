@@ -1,0 +1,38 @@
+{% extends 'blog/base_factura.html' %}
+{% block content %}
+        {% for factura in facturas %}
+            <div class="post">
+                <div class="date">
+                    {{ factura.pago.montototal }}
+                    <br>
+                    {{ factura.pago.fecha }}
+                </div>
+                <h1>{{ factura.residente.nombre }}</h1>
+                <p>{{ factura.mes.nombre|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    {% endblock %}
+{% load staticfiles %}
+    <html>
+        <head>
+            <title>Facturas</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        </head>
+        <body>
+          {% for post in posts %}
+            {% if post.published_date %}
+                  <div class="post">
+                      <div class="date">
+                          {{ post.published_date }}
+                      </div>
+                      <h1><a href="">{{ post.title }}</a></h1>
+                      <p>{{ post.text|linebreaksbr }}</p>
+                  </div>
+            {% endif %}
+              {% endfor %}
+
+        </body>
+    </html>
